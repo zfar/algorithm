@@ -14,14 +14,14 @@ int partition(int* arr, int begin, int end) {
     int pivote = arr[mid];
     swap(arr[begin], arr[mid]);
     while (begin < end) {
-        for (; end >= begin; --end) {
+        for (; end > begin; --end) {
             if (arr[end] < pivote) {
                 arr[begin] = arr[end];
                 break;
             }
         }
         
-        for (; begin <= end; ++begin) {
+        for (; begin < end; ++begin) {
             if (arr[begin] > pivote) {
                 arr[end] = arr[begin];
                 break;
