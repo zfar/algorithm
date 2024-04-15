@@ -7,13 +7,13 @@ int trans(const string& hex) {
     int ret = 0;
     char digit;
     int digit_num;
-    for (int i = len-1; i > 1; --i, weight = weight * 10) {
+    for (int i = len-1; i > 1; --i, weight = weight * 16) {
         digit = hex[i];
-        if ( digit < '9') {
+        if ( digit <= '9') {
             digit_num = digit - '0';
         }
         else {
-            digit_num = digit - 'A';
+            digit_num = digit - 'A' + 10;
         }
 
         ret += digit_num * weight;
