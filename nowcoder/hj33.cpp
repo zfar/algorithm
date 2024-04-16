@@ -10,14 +10,19 @@ typedef union my_ip_addr_
 } my_ip_addr;
 
 void process_integer_ip(string input, bool isBe) {
+    char buf[5];
     my_ip_addr ip_addr;
     ip_addr.ip_num = atoi(input.c_str());
-    if (isBe) {
-        cout << ip_addr.ip_byte[0] << "." << ip_addr.ip_byte[1] << "." << ip_addr.ip_byte[2] << "." << ip_addr.ip_byte[3] << endl;
+    if (!isBe) {
+        swap(ip_addr.ip_byte[3], ip_addr.ip_byte[0]);
+        swap(ip_addr.ip_byte[2], ip_addr.ip_byte[1]);
     }
-    else {
-        cout << ip_addr.ip_byte[3] << "." << ip_addr.ip_byte[2] << "." << ip_addr.ip_byte[1] << "." << ip_addr.ip_byte[0] << endl;
+    for (int i = 0; i < 3; ++i) {
+        sprintf(buf, "%d.", ip_addr.ip_byte[i]);
+        cout << buf;
     }
+    sprintf(buf, "%d", ip_addr.ip_byte[3]);
+    cout << buf << endl;
 }
 
 void process_string_ip(string& input, bool isBe) {
