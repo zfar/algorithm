@@ -40,10 +40,10 @@ int main() {
                     x += num;
                     break;
                 case 'S':
-                    y = -1 * num;
+                    y += -1 * num;
                     break;
                 case 'W':
-                    y = num;
+                    y += num;
                     break;
                 }
         }
