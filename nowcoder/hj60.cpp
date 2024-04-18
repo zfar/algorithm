@@ -25,17 +25,19 @@ void init_primes() {
 }
 
 void get_least_diff(int num) {
-    int m = sqrt(num);
-    for (; m > 1; --m) {
-        if (!composite_table[m]) {
-            int n = num - m;
-            if (!composite_table[n]) {
-                cout << m << endl;
-                cout << n << endl;
-                break;
-            }
+    int m,n;
+    int rm, rn; // no need to record min_diff
+    for (m = 2; m <= num / 2; ++m) { // num / 2 is ok
+        int n = num - m;
+        if (!composite_table[m] &&
+            !composite_table[n]) {
+                rm = m;
+                rn = n;
         }
     }
+
+    cout << rm << endl;
+    cout << rn << endl;
 }
 
 int main() {
