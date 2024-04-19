@@ -35,7 +35,7 @@ public:
         while(i < vec_nodes.size()) {
             auto node_info = vec_nodes.at(i);
             if (node_info.first != cur_level) {
-                level_pos.push_back(node_info.first);
+                level_pos.push_back(i);
                 ++cur_level;
             }
             if (node_info.second->left != nullptr) {
@@ -63,7 +63,9 @@ public:
                 }
             }
             ret.push_back(level);
+            flag ^= 1;
         }
 
         return ret;
+    }
 };
