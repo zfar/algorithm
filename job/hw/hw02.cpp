@@ -8,7 +8,10 @@
 #include <cctype>
 using namespace std;
 
-bool count_ch(const string& str, int& xn, int& yn, int s, int e) {
+// 输入字符串中只含有 X、Y，且为均衡字符串
+// 均衡字符串： XY个数相等
+// 求 切分成子串，且子串为均衡字符 后，子串数的最大值
+void count_ch(const string& str, int& xn, int& yn, int s, int e) {
     for (; s < e; ++s) {
         if (str[s] == 'X') {
             ++xn;
