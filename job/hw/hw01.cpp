@@ -54,6 +54,14 @@ int get_check_num(const vector<int>& ids, const set<int>& ids_set, const vector<
     return need_check.size();
 }
 
+// 5           // 人数
+// 1,2         // 病人id，从0开始
+// 1,1,0,1,0   // 人员之间接触的记录，是个无向图
+// 1,1,0,0,0
+// 0,0,1,0,1
+// 1,0,0,1,0
+// 0,0,1,0,1
+
 int main() {
     int n;
     string ids;
