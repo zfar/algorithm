@@ -28,6 +28,7 @@ public:
     vector<vector<int>> decorateRecord(TreeNode* root) {
         vector<vector<int>> ret;
         if (nullptr == root) {
+            // 返回空vector可以使用 return {};
             return ret;
         }
         vector<pair<int, TreeNode*>> vec_nodes;
