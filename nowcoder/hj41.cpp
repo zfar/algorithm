@@ -7,6 +7,7 @@ void get_sums(int index, const vector<int> &weights, int sum, const vector<int> 
               set<int> &sums) {
     if (index == weights.size()) {
         sums.insert(sum);
+        return;
     }
 
     int single_weight = weights.at(index);
