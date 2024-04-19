@@ -26,6 +26,10 @@ struct TreeNode {
 class Solution {
 public:
     vector<vector<int>> decorateRecord(TreeNode* root) {
+        vector<vector<int>> ret;
+        if (nullptr == root) {
+            return ret;
+        }
         vector<pair<int, TreeNode*>> vec_nodes;
         vector<int> level_pos;
         vec_nodes.push_back(make_pair(0,root));
@@ -48,7 +52,6 @@ public:
         }
         level_pos.push_back(vec_nodes.size());
 
-        vector<vector<int>> ret;
         int flag = 1;
         for (int i = 0; i < level_pos.size() - 1; ++i) {
             vector<int> level;
