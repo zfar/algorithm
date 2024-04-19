@@ -21,7 +21,7 @@ void break_line(string& str, vector<int>& nums) {
     nums.push_back(atoi(data + pos));
 }
 
-int get_check_num(const vector<int>& ids, const vector<vector<int> >& rels) {
+int get_check_num(const vector<int>& ids, const set<int>& ids_set, const vector<vector<int> >& rels) {
     set<int> need_check;
     for (int i : ids) {
         vector<int> id_vec;
@@ -40,7 +40,7 @@ int get_check_num(const vector<int>& ids, const vector<vector<int> >& rels) {
                 if (rels[id][j] && looked.find(j) == looked.end()) {
                     id_vec.push_back(j);
                     looked.insert(j);
-                    if (need_check.find(j) == need_check.end()) {
+                    if (need_check.find(j) == need_check.end() && ids_set.find(j) == ids_set.end()) {
                         need_check.insert(j);
                     }
                 }
@@ -60,8 +60,12 @@ int main() {
     while(cin >> n) {
         // input sicks
         vector<int> sicks;
+        set<int> sicks_set;
         cin >> ids;
         break_line(ids, sicks);
+        for (int i : sicks) {
+            sicks_set.insert(i);
+        }
 
         vector<vector<int> > rels;
         while(n--) {
@@ -71,7 +75,7 @@ int main() {
             rels.push_back(lines);
         }
         
-        cout << get_check_num(sicks, rels) << endl;
+        cout << get_check_num(sicks, sicks_set, rels) << endl;
     }
     return 0;
 }
