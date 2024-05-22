@@ -7,7 +7,7 @@ string getCorrectWord(const string& word) {
     string dest = { word.at(0) };
 
     for (int i = 1; i < word.size(); ++i) {
-        if (word[i] == word[a_start]) {
+        if (word[i] == word[a_start] && -1 == b_start) {
             a_len = i - a_start + 1;
             if (a_len == 2) {
                 dest.append(1, word[i]);
