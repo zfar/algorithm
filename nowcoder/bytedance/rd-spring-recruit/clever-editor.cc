@@ -23,6 +23,7 @@ string getCorrectWord(const string& word) {
                 else if (word[i] != word[b_start]) {
                     a_start = i;
                     b_start = -1;
+                    a_len = 0;
                     dest.append(1, word[i]);
                 }
             }
@@ -42,7 +43,7 @@ int main() {
     while ( cin >> total ) {
         while (total--) {
             cin >> word;
-            cout << getCorrectWord(word);
+            cout << getCorrectWord(word) << endl;
         }
     }
 }
