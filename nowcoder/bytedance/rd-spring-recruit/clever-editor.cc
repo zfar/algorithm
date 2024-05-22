@@ -14,7 +14,7 @@ string getCorrectWord(const string& word) {
             }
         }
         else {
-            if (2 == a_len) {
+            if (2 <= a_len) {
                 if (-1 == b_start) {
                     b_start = i;
                     b_len = 1;
