@@ -34,7 +34,7 @@ public:
             return ret;
         }
         if (! values.empty() && values.back() >= root->val) {
-            ret = false;
+            return false;
         }
 
         values.emplace_back(root->val);
@@ -42,9 +42,6 @@ public:
         ret = isValidBST(root->right);
         if (! ret) {
             return ret;
-        }
-        if (! values.empty() && values.back() <= root->val ) {
-            return false;
         }
 
         return true;
