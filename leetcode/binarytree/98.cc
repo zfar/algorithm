@@ -22,11 +22,18 @@ public:
             return true;
         }
 
+        if (nullptr != root->left && root->left->val >= root->val) {
+            return false;
+        }
+        if (nullptr != root->right && root->right->val <= root->val) {
+            return false;
+        }
+
         bool ret = isValidBST(root->left);
         if (! ret) {
             return ret;
         }
-        if (! values.empty() && values.back() > root->val) {
+        if (! values.empty() && values.back() >= root->val) {
             ret = false;
         }
 
@@ -36,7 +43,7 @@ public:
         if (! ret) {
             return ret;
         }
-        if (! values.empty() && values.back() < root->val ) {
+        if (! values.empty() && values.back() <= root->val ) {
             return false;
         }
 
