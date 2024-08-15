@@ -13,7 +13,6 @@ struct TreeNode {
 #include <vector>
 #include <list>
 using namespace std;
-
 class Solution {
 public:
     using z_pair = pair<TreeNode*, int>;
@@ -32,6 +31,7 @@ public:
             if (node.second != level) {
                 ret.emplace_back(values);
                 values.clear();
+                level += 1;
             }
             values.emplace_back(t_node->val);
 
