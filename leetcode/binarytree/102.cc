@@ -13,13 +13,18 @@ struct TreeNode {
 #include <vector>
 #include <list>
 using namespace std;
+
+// 看官方题解，可以不用level这个变量
 class Solution {
 public:
-    using z_pair = pair<TreeNode*, int>;
+    using z_pair = pair<TreeNode*, int>; // using
     using z_queue = list<z_pair>;
 
     vector<vector<int>> levelOrder(TreeNode* root) {
-        z_queue nodes {make_pair(root, 1)};
+        if (nullptr == root) {
+            return vector<vector<int>>();
+        }
+        z_queue nodes {make_pair(root, 1)}; // 列表初始化
         int level = 1;
         vector<vector<int>> ret;
         vector<int> values;
