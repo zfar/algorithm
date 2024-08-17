@@ -36,8 +36,8 @@ public:
                 if (nullptr != node->right) {
                     nodes.push(node->right);
                 }
-                ++level;
             }
+            ++level;
         }
 
         return level;
