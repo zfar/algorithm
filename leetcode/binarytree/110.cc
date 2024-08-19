@@ -23,8 +23,12 @@ public:
     }
 
     bool isBalanced(TreeNode* root) {
+        if (nullptr == root) {
+            return true;
+        }
+
         int l = deepth(root->left);
         int r = deepth(root->right);
-        return abs(l - r) > 1;
+        return abs(l - r) < 2;
     }
 };
