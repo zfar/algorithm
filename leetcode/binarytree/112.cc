@@ -10,17 +10,25 @@ struct TreeNode {
 
 class Solution {
 public:
-    bool hasPathSum(TreeNode* root, int targetSum) {
+    bool canMatch(TreeNode* root, int targetSum) {
         if (nullptr == root) {
             return targetSum == 0;
         }
 
         int subSum = targetSum - root->val;
-        bool ret = hasPathSum(root->left, subSum);
+        bool ret = canMatch(root->left, subSum);
         if (ret) {
             return ret;
         }
         
-        return hasPathSum(root->right, subSum);
+        return canMatch(root->right, subSum);
+    }
+
+    bool hasPathSum(TreeNode* root, int targetSum) {
+        if (nullptr == root) {
+            return false;
+        }
+
+        return canMatch(root, targetSum);
     }
 };
