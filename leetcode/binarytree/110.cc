@@ -18,7 +18,19 @@ public:
         }
 
         int l = deepth(root->left);
+        if (l < 0) {
+            return -1;
+        }
+
         int r = deepth(root->right);
+        if (r < 0) {
+            return -1;
+        }
+
+        if (abs(l - r) > 1) {
+            return -1;
+        }
+
         return max(l, r) + 1;
     }
 
@@ -26,9 +38,6 @@ public:
         if (nullptr == root) {
             return true;
         }
-
-        int l = deepth(root->left);
-        int r = deepth(root->right);
-        return abs(l - r) < 2;
+        return deepth(root) > 0 ? true: false;
     }
 };
