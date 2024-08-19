@@ -12,7 +12,11 @@ class Solution {
 public:
     bool canMatch(TreeNode* root, int targetSum) {
         if (nullptr == root) {
-            return targetSum == 0;
+            return false;
+        }
+
+        if (nullptr == root->left && nullptr == root->right) {
+            return root->val == targetSum;
         }
 
         int subSum = targetSum - root->val;
