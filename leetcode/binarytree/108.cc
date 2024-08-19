@@ -16,8 +16,9 @@ using namespace std;
 
 class Solution {
 public:
+    // end 不能作为开区间，因为递归调用式的end参数选 (mid - 1) 更直观
     TreeNode* buildBST(vector<int>& nums, int begin, int end) {
-        if (begin <= end) {
+        if (begin > end) {
             return nullptr;
         }
 
@@ -30,6 +31,13 @@ public:
     }
 
     TreeNode *sortedArrayToBST(vector<int> &nums) {
-        return buildBST(nums, 0, nums.size());
+        return buildBST(nums, 0, nums.size() - 1);
     }
 };
+
+int main() {
+    vector<int> nums = {1, 3};
+    Solution s;
+    TreeNode* t = s.sortedArrayToBST(nums); 
+    return 0;
+}
