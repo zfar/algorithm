@@ -21,16 +21,17 @@ public:
         // level traversal
         vector<pair<TreeNode*,int>> nodes;
         nodes.emplace_back(root, 1);
-        auto it = nodes.begin();
+        int it = 0;
         int level;
-        while (it != nodes.end())
-        {
-            level = it->second;
-            if (nullptr != it->first->left) {
-                nodes.emplace_back(it->first->left, level + 1);
+        TreeNode* cur;
+        while (it < nodes.size()) {
+            level = nodes.at(it).second;
+            cur = nodes.at(it).first;
+            if (nullptr != cur->left) {
+                nodes.emplace_back(cur->left, level + 1);
             }
-            if (nullptr != it->first->right) {
-                nodes.emplace_back(it->first->right, level + 1);
+            if (nullptr != cur->right) {
+                nodes.emplace_back(cur->right, level + 1);
             }
             ++it;
         }
