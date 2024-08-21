@@ -50,7 +50,8 @@ public:
                     level_ret.emplace_back(nodes.at(i + j).first->val);
                 }
                 ret.emplace_back(level_ret);
-                level_size = 0;
+                level_size = 1; // or the top level vector will miss
+                --level; // or the one level vector will be broken
                 level_ret.clear();
             }
         }
