@@ -39,19 +39,26 @@ public:
         // pack the result
         vector<vector<int>> ret;
         vector<int> level_ret;
-        int node_level;
-        for (auto r_it = nodes.rbegin(); r_it != nodes.rend(); ++r_it) {
-            node_level = r_it->second;
+        int node_level, level_size = 0;
+        for (int i = nodes.size() - 1; i > -1; --i) {
+            node_level = nodes.at(i).second;
             if (node_level == level) {
-                level_ret.emplace_back(r_it->first->val);
+                ++level_size;
             }
             else {
+                for (int j = 1; j < level_size + 1; ++j) {
+                    level_ret.emplace_back(nodes.at(i + j).first->val);
+                }
                 ret.emplace_back(level_ret);
+                level_size = 0;
                 level_ret.clear();
             }
         }
 
-        if (!level_ret.empty()) {
+        if (level_size > 0) {
+            for(int j = 0; j < level_size; ++j) {
+                level_ret.emplace_back(nodes.at(j).first->val);
+            }
             ret.emplace_back(level_ret);
         }
 
