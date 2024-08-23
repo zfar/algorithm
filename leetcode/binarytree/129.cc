@@ -10,7 +10,7 @@ struct TreeNode {
 
 class Solution {
 public:
-    void getSum(TreeNode* root, int& num, int& sum) {
+    void getSum(TreeNode* root, int num, int& sum) {
         num *= 10;
         num += root->val;
 
