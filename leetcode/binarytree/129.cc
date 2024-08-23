@@ -9,8 +9,10 @@ struct TreeNode {
 };
 
 class Solution {
+private:
+    int sum;
 public:
-    void getSum(TreeNode* root, int num, int& sum) {
+    void getSum(TreeNode* root, int num) {
         num *= 10;
         num += root->val;
 
@@ -21,11 +23,11 @@ public:
         }
 
         if (nullptr != root->left) {
-            getSum(root->left, num, sum);
+            getSum(root->left, num);
         }
 
         if (nullptr != root->right) {
-            getSum(root->right, num, sum);
+            getSum(root->right, num);
         }
     }
 
@@ -34,8 +36,9 @@ public:
             return 0;
         }
 
-        int ret = 0, num = 0;
-        getSum(root, num, ret);
-        return ret;
+        int num = 0;
+        sum = 0;
+        getSum(root, num);
+        return sum;
     }
 };
