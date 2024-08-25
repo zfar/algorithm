@@ -26,7 +26,7 @@ public:
             node = nodes.at(i);
             if (nullptr == node->right) {
                 if (nullptr == node->left) {
-                    ret = nodes.size() * 2 + 1;
+                    ret = (nodes.size() - 1) * 2 + 1;
                 }
                 else {
                     ret = nodes.size() * 2;
