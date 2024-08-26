@@ -26,10 +26,10 @@ public:
             node = nodes.at(i);
             if (nullptr == node->right) {
                 if (nullptr == node->left) {
-                    ret = (nodes.size() - 1) * 2 + 1;
+                    ret = i * 2 + 1;
                 }
                 else {
-                    ret = nodes.size() * 2;
+                    ret = (i + 1) * 2;
                 }
                 break;
             }
