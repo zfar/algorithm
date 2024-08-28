@@ -1,20 +1,21 @@
 class Solution {
 public:
     int numTrees(int n) {
-        if (0 == n || 1 == n) {
-            return 1;
+        static int ret[20] = {0};
+        
+        ret[0] = ret[1] = 1;
+        if (ret[n] != 0) {
+            return ret[n];
         }
 
-        int ret = 1;
-        for (int i = n + 2; i < 2 * n; ++i) {
-            ret *= i;
+        if (ret[n -1] != 0) {
+            return (4*n-2) * ret[n-1] / n + 1;
         }
-        ret *= 2; // 2n / n
 
-        int denominator = 1;
-        for (int i = 2; i < n; ++i) {
-            denominator *= i;
+        int i;
+        for (i = 2; i < n + 1; ++i) {
+            ret[i] = (4*i -2)*ret[i-1] / i +1;
         }
-        return ret / denominator;
+        return ret[n];
     }
 };
