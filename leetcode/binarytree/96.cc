@@ -1,7 +1,7 @@
 class Solution {
 public:
     int numTrees(int n) {
-        if (0 == n) {
+        if (0 == n || 1 == n) {
             return 1;
         }
 
