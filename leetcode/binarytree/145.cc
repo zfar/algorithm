@@ -14,7 +14,7 @@ using namespace std;
 
 class Solution {
 public:
-        vector<int> postorderTraversal(TreeNode* root) {
+    vector<int> postorderTraversal(TreeNode* root) {
         if (nullptr == root) {
             return vector<int>();
         }
@@ -30,7 +30,9 @@ public:
                 if (nullptr != node->right) {
                     nodes.push(node->right);
                 }
+                tmp = node;
                 node = node->left;
+                tmp->left = nullptr;
             }
 
             do {
