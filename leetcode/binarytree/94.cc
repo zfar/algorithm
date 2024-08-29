@@ -13,6 +13,8 @@ using namespace std;
 
 class Solution {
 public:
+    // case failed:
+    // [1,null,2,3]
     vector<int> inorderTraversal(TreeNode* root) {
         if (nullptr == root) {
             return vector<int>();
@@ -34,6 +36,8 @@ public:
             ret.push_back(node->val);
             if (nullptr != node->right) {
                 node = node->right;
+                nodes.push(node);
+                node = node->left;
             }
         } while (!nodes.empty());
 
