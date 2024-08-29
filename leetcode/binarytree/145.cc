@@ -24,7 +24,7 @@ public:
         vector<int> ret;
 
         node = root;
-        while(!nodes.empty()) {
+        do {
             while(nullptr != node) {
                 nodes.push(node);
                 if (nullptr != node->right) {
@@ -36,7 +36,7 @@ public:
             node = nodes.top();
             nodes.pop();
             ret.push_back(node->val);
-        }
+        } while(!nodes.empty());
 
         return ret;
     }
