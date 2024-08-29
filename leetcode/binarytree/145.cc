@@ -14,13 +14,13 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> postorderTraversal(TreeNode* root) {
         if (nullptr == root) {
             return vector<int>();
         }
         
         stack<TreeNode*> nodes;
-        TreeNode* node;
+        TreeNode* node, *tmp;
         vector<int> ret;
 
         node = root;
@@ -36,13 +36,15 @@ public:
             do {
                 node = nodes.top();
                 if (nullptr != node->left) {
+                    tmp = node;
                     node = node->left;
+                    tmp->left = nullptr;
                     break;
                 }
                 nodes.pop();
                 ret.push_back(node->val);
-            } while (nullptr == node->left);
-
+            } while (nullptr == node->left && !nodes.empty());
+ 
         } while(!nodes.empty());
 
         return ret;
