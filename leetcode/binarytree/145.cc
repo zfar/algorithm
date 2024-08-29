@@ -35,6 +35,10 @@ public:
 
             do {
                 node = nodes.top();
+                if (nullptr != node->left) {
+                    node = node->left;
+                    break;
+                }
                 nodes.pop();
                 ret.push_back(node->val);
             } while (nullptr == node->left);
