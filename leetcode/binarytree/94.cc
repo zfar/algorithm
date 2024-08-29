@@ -39,6 +39,9 @@ public:
                 nodes.push(node);
                 node = node->left;
             }
+            else {
+                node = nullptr;
+            }
         } while (!nodes.empty());
 
         return ret;
