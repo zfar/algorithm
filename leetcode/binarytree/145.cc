@@ -33,9 +33,12 @@ public:
                 node = node->left;
             }
 
-            node = nodes.top();
-            nodes.pop();
-            ret.push_back(node->val);
+            do {
+                node = nodes.top();
+                nodes.pop();
+                ret.push_back(node->val);
+            } while (nullptr == node->left);
+
         } while(!nodes.empty());
 
         return ret;
