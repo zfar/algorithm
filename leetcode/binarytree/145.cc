@@ -14,6 +14,11 @@ using namespace std;
 
 class Solution {
 public:
+    // case ok:
+    // [1,null,2,3]
+    // [1,2,3,4,5,null,null,null,null,7]
+    // case failed:
+    // [2,null,3,null,1]
     vector<int> postorderTraversal(TreeNode* root) {
         if (nullptr == root) {
             return vector<int>();
@@ -29,6 +34,7 @@ public:
                 nodes.push(node);
                 if (nullptr != node->right) {
                     nodes.push(node->right);
+                    node->right = nullptr; // !!!
                 }
                 tmp = node;
                 node = node->left;
@@ -41,6 +47,12 @@ public:
                     tmp = node;
                     node = node->left;
                     tmp->left = nullptr;
+                    break;
+                }
+                if (nullptr != node->right) {
+                    tmp = node;
+                    node = node->right;
+                    tmp->right = nullptr;
                     break;
                 }
                 nodes.pop();
