@@ -20,7 +20,7 @@ public:
 
         deque<TreeNode*> nodes;
         TreeNode* node;
-        int size;
+        int size, i;
         bool beginLeft = true;
         vector<vector<int>> ret;
 
@@ -29,10 +29,10 @@ public:
             size = nodes.size();
             ret.emplace_back(size);
             if (beginLeft) {
-                while(size--) {
+                for (i = 0; i < size; ++i) {
                     node = nodes.front();
                     nodes.pop_front();
-                    ret.back().push_back(node->val);
+                    ret.back()[i] = node->val;
                     if (node->left) {
                         nodes.emplace_back(node->left);
                     }
@@ -44,9 +44,10 @@ public:
             }
             else {
                 auto r_it = nodes.rbegin();
+                i = 0;
                 for (; r_it != nodes.rend(); ++r_it) {
                     node = *r_it; 
-                    ret.back().push_back(node->val);
+                    ret.back()[i++] = (node->val);
                 }
 
                 while (size--) {
