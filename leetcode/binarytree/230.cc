@@ -9,24 +9,28 @@ struct TreeNode {
 
 class Solution {
     int ret;
+    int count;
     int k_th;
-    int countNodes(TreeNode* root) {
+    void countNodes(TreeNode* root) {
         if (nullptr == root || -1 != ret) {
-            return 0;
+            return;
         }
 
-        int lc = countNodes(root->left);
-        if (lc + 1 == k_th) {
+        countNodes(root->left);
+        ++count;
+        if (count == k_th) {
             ret = root->val;
+            return;
         }
-        int lr = countNodes(root->right);
-        return lc + 1 + lr;
+        countNodes(root->right);
+        return;
     }
 
 public:
     int kthSmallest(TreeNode* root, int k) {
-        k_th = k;
         ret = -1;
+        count = 0;
+        k_th = k;
         countNodes(root);
         return ret;
     }
