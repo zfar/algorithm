@@ -8,8 +8,9 @@ struct TreeNode {
 };
 
 class Solution {
-    int rv, lv, gv;
+    int lv, gv;
     TreeNode* find(TreeNode* root) {
+        int rv = root->val;
         if (lv == rv || gv == rv || (rv > lv && rv < gv)) {
             return root;
         }
@@ -21,15 +22,16 @@ class Solution {
         if (lv > rv) {
             return find(root->right);
         }
+
+        return nullptr;
     }
 
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        if (root && p && q) {
+        if (!(root && p && q)) {
             return nullptr;
         }
 
-        rv = root->val;
         lv = p->val;
         gv = q->val;
         if (lv > gv) {
