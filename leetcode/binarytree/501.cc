@@ -46,12 +46,36 @@ class Solution {
 
 public:
     vector<int> findMode(TreeNode* root) {
-        cur = -1;
+
+        // init
+        TreeNode* tmp = root;
+        while(nullptr != tmp->left) {
+            tmp = tmp->left;
+        }
+        cur = tmp->val;
         count = 0;
         max_count = -1;
         max_nums.clear();
 
+        // count
         find(root);
+
+        // for last sequence
+        if (count > max_count) {
+            max_nums.clear();
+            max_nums.push_back(cur);
+        }
+        else if (count == max_count) {
+            max_nums.push_back(cur);
+        }
+
         return max_nums;
     }
 };
+
+int main() {
+    TreeNode n1(1), n2(2);
+    n1.right = &n2;
+    Solution s;
+    s.findMode(&n1);
+}
