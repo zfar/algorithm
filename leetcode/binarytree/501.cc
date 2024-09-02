@@ -30,6 +30,7 @@ class Solution {
             if (count > max_count) {
                 max_nums.clear();
                 max_nums.push_back(cur);
+                max_count = count;
             }
             else if (count == max_count) {
                 max_nums.push_back(cur);
