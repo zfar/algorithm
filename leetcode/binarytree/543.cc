@@ -19,7 +19,7 @@ class Solution {
 
         int ld = countDepth(root->left);
         int rd = countDepth(root->right);
-        int d = ld + rd - 2;
+        int d = ld + rd;
         if (d > max_d) {
             max_d = d;
         }
